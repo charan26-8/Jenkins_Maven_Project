@@ -14,27 +14,36 @@ pipeline {
 
         stage('Build') {
             steps {
-                bat 'mvn clean compile'
+                bat '''
+                    echo "Running mvn clean compile"
+                    mvn clean compile
+                '''
             }
         }
 
         stage('Test') {
             steps {
-                bat 'mvn test'
+                bat '''
+                    echo "Running mvn test"
+                    mvn test
+                '''
             }
         }
 
         stage('Package') {
             steps {
-                bat 'mvn package'
+                bat '''
+                    echo "Running mvn package"
+                    mvn package
+                '''
             }
         }
     }
 
     post {
         always {
+            echo "Collecting test results"
             junit 'target/surefire-reports/*.xml'
         }
     }
 }
-
