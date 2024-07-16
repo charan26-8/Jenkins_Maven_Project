@@ -16,7 +16,7 @@ pipeline {
             steps {
                 bat '''
                     echo "Running mvn clean compile"
-                    mvn clean compile
+                    mvn clean compile -e -X
                 '''
             }
         }
@@ -25,7 +25,7 @@ pipeline {
             steps {
                 bat '''
                     echo "Running mvn test"
-                    mvn test
+                    mvn test -e -X
                 '''
             }
         }
@@ -34,7 +34,7 @@ pipeline {
             steps {
                 bat '''
                     echo "Running mvn package"
-                    mvn package
+                    mvn package -e -X
                 '''
             }
         }
